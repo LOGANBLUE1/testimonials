@@ -4,27 +4,15 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from 'react';
 
 
-const Testimonials = (props) => {
-    let reviews = props.reviews;
+const Testimonials = ({reviews}) => {
     const [index, setIndex] = useState(0);
 
     function leftShiftHandler() {
-        if(index - 1 < 0) {
-            setIndex(reviews.length - 1);
-        }
-        else {
-            setIndex(index - 1);
-        }
+            setIndex((index - 1 + reviews.length)%reviews.length);
     }
 
     function rightShiftHandler() {
-        if(index + 1 >=reviews.length) {
-            setIndex(0);
-        }
-        else {
-            setIndex(index+1);
-        }
-
+        setIndex((index + 1 + reviews.length)%reviews.length);
     }
 
     function surpriseHandler() {
@@ -55,7 +43,7 @@ const Testimonials = (props) => {
       <div className='mt-6'>
         <button
         onClick={surpriseHandler}
-         className='bg-violet-400 hover:bg-violet-500 transition-all duration-200
+        className='bg-violet-400 hover:bg-violet-500 transition-all duration-200
         cursor-pointer px-10 py-2 rounded-md font-bold text-white text-lg'>
             Surprise Me
         </button>

@@ -2,8 +2,7 @@ import React from 'react'
 import {FaQuoteLeft, FaQuoteRight} from 'react-icons/fa';
 
 
-const Card = (props) => {
-    let review = props.review;
+const Card = ({review}) => {
   return (
     <div className='flex flex-col md:relative'>
       <div className='absolute top-[-7rem] z-[10] mx-auto'>
